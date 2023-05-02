@@ -1,12 +1,5 @@
-import { logger } from "@vendetta";
-import Settings from "./Settings";
+import { findByProps } from "@vendetta/metro";
+import { instead } from "@vendetta/patcher";
 
-export default {
-    onLoad: () => {
-        vendetta.metro.findByProps("isYouTabEnabled").isYouTabEnabled = () => true
-    },
-    onUnload: () => {
-        logger.log("Goodbye, world.");
-    },
-    settings: Settings,
-}
+const unpatch = instead("isYouTabEnabled", findByProps("isYouTabEnabled"), () => true);
+export const onUnload = unpatch;
