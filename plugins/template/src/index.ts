@@ -3,7 +3,7 @@ import Settings from "./Settings";
 
 export default {
     onLoad: () => {
-        logger.log("Hello world!");
+        vendetta.metro.findByProps("isYouTabEnabled").isYouTabEnabled = () => true
     },
     onUnload: () => {
         logger.log("Goodbye, world.");
